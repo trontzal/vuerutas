@@ -19,9 +19,15 @@
     </ul>
   </div>
 </nav>
-
+<PorHacer />
   <router-view/>
 </template>
+
+<script>
+
+
+
+</script>
 
 <style>
 #app {

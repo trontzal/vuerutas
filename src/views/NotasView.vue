@@ -1,4 +1,5 @@
 <template>
+    <PorHacer />
     <main>
         <div v-show="showModal" class="overlay">
             <div  class="modal">
@@ -13,17 +14,21 @@
                 <button @click="showModal = true">+</button>
             </header>
             <div class="cards-container">
-                <div v-for="note in notes" class="card">
-                    <p class="main-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga, adipisci aliquid illo aliquam quisquam maiores!</p>
-                    <p class="date">06/03/2023</p>
+                <div v-for="note in notes" :key="id" class="card" :style="{backgroundColor: note.backgroundColor}">
+                    <p class="main-text">{{ note.text }}</p>
+                    <p class="date">{{ note.date.toLocaleDateString("en-eu") }}</p>
                 </div>
             </div>
         </div>
     </main>
+   
 </template>
 
 <script setup>
-import { ref } from "vue";
+    import PorHacer from '../components/PorHacer.vue';
+    import { ref } from "vue";
+
+
 
 const showModal = ref(false)
 const newNote = ref("")
