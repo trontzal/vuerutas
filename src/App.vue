@@ -1,6 +1,6 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <nav class="navbar navbar-expand-lg navbar-light ">
+    <router-link to="/"><img src="../src/assets/logo.png" alt="" id="logo"></router-link>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -10,28 +10,16 @@
         <a class="nav-link" href="#"><router-link to="/">Home</router-link></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"><router-link to="/about">About</router-link></a>
+        <a class="nav-link" href="#"><router-link to="/notas">Notas</router-link></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Pricing</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown link
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
+      
     </ul>
   </div>
 </nav>
-  <!-- <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav> -->
+
   <router-view/>
 </template>
 
@@ -56,4 +44,14 @@ nav a {
 nav a.router-link-exact-active {
   color: #42b983;
 }
+/* nav  bar */
+  #logo{
+    width: 5rem;
+  }
+
+  .navbar{
+    width: fit-content;
+    margin: 0 auto;
+  }
+
 </style>
