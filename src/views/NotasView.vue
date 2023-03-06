@@ -21,7 +21,7 @@
             </div>
         </div>
     </main>
-   
+    <PorHacer v-bind:key="'por-hacer'"></PorHacer>
 </template>
 
 <script setup>
