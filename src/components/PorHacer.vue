@@ -1,11 +1,11 @@
 <template>
 
-<h1>hola</h1>
-<p>Hacer que las tarjetas se puedan borrar y arrastrar a una casilla de "hecho"</p>
+<h1>Por Hacer</h1>
 <div class="cards-container">
-                <div v-for="note in notes" :key="id" class="card" :style="{backgroundColor: note.backgroundColor}">
+                <div  v-for="note in notes" :key="id" class="card" :style="{backgroundColor: note.backgroundColor}">
                     <p class="main-text">{{ note.text }}</p>
                     <p class="date">{{ note.date.toLocaleDateString("en-eu") }}</p>
+                    <input type="checkbox" @click="showCard=false">
                 </div>
             </div>
 </template>
@@ -20,7 +20,7 @@ export default {
     }
    
 }
-console.log()
+
 
 
 </script>
