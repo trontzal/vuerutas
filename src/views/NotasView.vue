@@ -1,6 +1,6 @@
 <template>
-    <PorHacer />
     <main>
+        <!-- ------Ventana que solo esta visible al crear  -->
         <div v-show="showModal" class="overlay">
             <div  class="modal">
                 <textarea v-model="newNote" name="notes" id="notes" cols="30" rows="10"></textarea>
@@ -8,28 +8,31 @@
                 <button @click="showModal = false" class="cerrar">Cerrar</button>
             </div>
         </div>
+        <!-- Container entero -->
         <div class="container">
             <header>
                 <h2>Notas</h2>
                 <button @click="showModal = true">+</button>
             </header>
-            <div class="cards-container">
+            <PorHacer :notes="notes" />
+            <!-- Tarjetas dinamicas -->
+            <!-- <div class="cards-container">
                 <div v-for="note in notes" :key="id" class="card" :style="{backgroundColor: note.backgroundColor}">
                     <p class="main-text">{{ note.text }}</p>
                     <p class="date">{{ note.date.toLocaleDateString("en-eu") }}</p>
                 </div>
-            </div>
+            </div> -->
         </div>
     </main>
-    <PorHacer v-bind:key="'por-hacer'"></PorHacer>
+    <!-- <PorHacer v-bind:key="'por-hacer'"></PorHacer> -->
 </template>
 
 <script setup>
     import PorHacer from '../components/PorHacer.vue';
     import { ref } from "vue";
+    
 
-
-
+// modal por defecdto en falso para que no aparezca
 const showModal = ref(false)
 const newNote = ref("")
 const notes = ref([])
@@ -37,16 +40,18 @@ const notes = ref([])
 const addNote =() => {
     notes.value.push({
         id: Math.floor(Math.random() * 10000000),
-        text: newNote.value, 
+        text: newNote.value,
         date: new Date(),
-        backgroundColor: getRandomColor()  
+        backgroundColor: getRandomColor()
     })
     showModal.value = false
     newNote.value = ""
 }
+// funcion que retorna colores claros aleatorios
 function getRandomColor() {
   return "hsl(" + Math.random() * 360 + ", 100%, 75%)";
 }
+
 
 </script>
 
@@ -86,28 +91,14 @@ function getRandomColor() {
         font-size: 2rem;
     }
 
-    .card{
-        width: 12rem;
-        height: 15rem;
-        background-color:aquamarine;
-        padding: 1rem;
-        border-radius: 15px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        margin-right: 2rem;
-        margin-bottom: 2rem;
-    }
+    
 
     .date{
         font-size: 0.8rem;
         font-weight: bold;
     }
 
-    .cards-container{
-        display: flex;
-        flex-wrap:wrap;
-    }
+    
 
     .overlay{
         position: absolute;
