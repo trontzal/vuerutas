@@ -15,6 +15,8 @@
                 <button @click="showModal = true">+</button>
             </header>
             <PorHacer :notes="notes" />
+            <YaHecho :listaHecha="listaHecha"/>
+            <button @click="prueba()">Array</button>
             <!-- Tarjetas dinamicas -->
             <!-- <div class="cards-container">
                 <div v-for="note in notes" :key="id" class="card" :style="{backgroundColor: note.backgroundColor}">
@@ -29,8 +31,14 @@
 
 <script setup>
     import PorHacer from '../components/PorHacer.vue';
+    import YaHecho from '../components/YaHecho.vue';
     import { ref } from "vue";
-    
+    import {note} from '../components/PorHacer.vue'
+import store from '@/store';
+
+function prueba(){
+    console.log(listaHecha)
+}
 
 // modal por defecdto en falso para que no aparezca
 const showModal = ref(false)
