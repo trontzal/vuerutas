@@ -14,16 +14,11 @@
                 <h2>Notas</h2>
                 <button @click="showModal = true">+</button>
             </header>
-            <PorHacer :notes="notes" />
-            <YaHecho :listaHecha="listaHecha"/>
-            <button @click="prueba()">Array</button>
-            <!-- Tarjetas dinamicas -->
-            <!-- <div class="cards-container">
-                <div v-for="note in notes" :key="id" class="card" :style="{backgroundColor: note.backgroundColor}">
-                    <p class="main-text">{{ note.text }}</p>
-                    <p class="date">{{ note.date.toLocaleDateString("en-eu") }}</p>
-                </div>
-            </div> -->
+            <PorHacer :notes="notes" @listaActualizada="actualizarListaHecha"></PorHacer>
+          
+            <YaHecho/>
+
+            <button>Array de id</button>
         </div>
     </main>
     <!-- <PorHacer v-bind:key="'por-hacer'"></PorHacer> -->
@@ -33,17 +28,12 @@
     import PorHacer from '../components/PorHacer.vue';
     import YaHecho from '../components/YaHecho.vue';
     import { ref } from "vue";
-    import {note} from '../components/PorHacer.vue'
-import store from '@/store';
-
-function prueba(){
-    console.log(listaHecha)
-}
 
 // modal por defecdto en falso para que no aparezca
 const showModal = ref(false)
 const newNote = ref("")
 const notes = ref([])
+const idNotes = ref(0)
 
 const addNote =() => {
     notes.value.push({
@@ -60,11 +50,15 @@ function getRandomColor() {
   return "hsl(" + Math.random() * 360 + ", 100%, 75%)";
 }
 
+function actualizarListaHecha(id){
+    idNotes.value = id 
+    console.log(idNotes.value)
+}
+
 
 </script>
 
 <style scoped>
-
     main{
         height: 100vh;
         width: 100vw;

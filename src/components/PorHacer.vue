@@ -6,38 +6,47 @@
                 <div v-for="(note,index) in notes" :key="index" class="card" :style="{backgroundColor: note.backgroundColor}">
                     <p class="main-text">{{ note.text }}</p>
                     <p class="date">{{ note.date.toLocaleDateString("en-eu") }}</p>
-                    <button @click="showDetail(note)" class="detalle">Detalle</button>
+                    <button @click="showDetail(note.id)" class="detalle">Detalle</button>
                 </div>
             </div>
-
+            <!-- <div class="cards-container">
+                <div  :key="index" class="card" :style="{backgroundColor: note.backgroundColor}">
+                    <p class="main-text">{{ listaHecha.text }}</p>
+                    <p class="date">{{ note.date.toLocaleDateString("en-eu") }}</p>
+                </div>
+            </div> -->
 </template>
 
 <script>
-import { pushScopeId } from 'vue';
-import { reactive } from 'vue';
+import { ref } from 'vue';
 
-export const listaHecha = reactive([]);
+    
+const listaHecha = ref(0);
 
 export default {
     name: 'PorHacer',
     props:{
         notes:{
             type: Array
+        },
+        listaHecha:{
+            type: Array
         }
     },
-  methods: {
-        // deleteNote: function(index) {
-        // this.notes.splice(index, 1);
-        // }
-        showDetail(note) {
-         listaHecha.push(note)
-         console.log(listaHecha)
-    }
-    }
+setup(props, {emit}){
+
+const showDetail = (note) => {
+    listaHecha.value = note
+    emit("listaActualizada", listaHecha.value)
+    
 }
 
-
-
+    return{
+        showDetail 
+    }
+}
+}
+    
 </script>
 
 <style>
